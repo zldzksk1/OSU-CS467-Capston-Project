@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "9b5a47d5-af9c-42d9-ba57-7f61314b5296",
+		"name": "QuizBanana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"content is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[\"user\"][\"firstName\"]).to.eq(\"Paul\");\r",
+							"    pm.expect(pm.response.json()[\"user\"][\"lastName\"]).to.eq(\"Leone\");\r",
+							"    pm.expect(pm.response.json()[\"user\"][\"organization\"]).to.eq(\"Experian\");\r",
+							"    pm.expect(pm.response.json()[\"user\"][\"email\"]).to.eq(\"pleone550@gmail.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Paul\",\r\n    \"lastName\": \"Leone\",\r\n    \"organization\": \"Experian\",\r\n    \"email\": \"pleone550@gmail.com\",\r\n    \"password\": \"Arrow-pl55\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/api/employer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"employer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlNjY5MDc0NTFiNmEzZGU3NDAwMTkzIn0sImlhdCI6MTY0MjQ5MDExOSwiZXhwIjoxNjQyODUwMTE5fQ.iRNCI5rLDtO2SIBeNJq7aU_jSzVPQsS-1oMoBjVf0iE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"pleone550@gmail.com\",\r\n    \"password\": \"Arrow-pl55\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"content is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[\"firstName\"]).to.eq(\"Paul\");\r",
+							"    pm.expect(pm.response.json()[\"lastName\"]).to.eq(\"Leone\");\r",
+							"    pm.expect(pm.response.json()[\"organization\"]).to.eq(\"Experian\");\r",
+							"    pm.expect(pm.response.json()[\"email\"]).to.eq(\"pleone550@gmail.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlNjY5MDc0NTFiNmEzZGU3NDAwMTkzIn0sImlhdCI6MTY0MjQ5MDE0NCwiZXhwIjoxNjQyODUwMTQ0fQ.VxpN_IcoOjVuRRJF4yWCZe09Jf2ACC_Ilbvdkr43CUA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,6 @@
 # CS467 Capstone Project 
 ## Software Programming Quiz by Team QuizBanana<br/><br/>
-
+![alt text](https://github.com/zldzksk1/OSU-CS467-Capston-Project/blob/main/QB_image.jpg)
 ## Introduction
 
 Members: Paul Leone, Sangyun Lee, Pamela Yin<br/>
